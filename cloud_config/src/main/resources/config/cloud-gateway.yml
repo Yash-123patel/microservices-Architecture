@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: employee-info
+            uri: http://localhost:8084/
+            predicates:
+              - Path=/employee/**
+          - id: department-info
+            uri: http://localhost:8082/
+            predicates:
+              - Path=/department/**
+    
+    logging:
+      level:
+        org.springframework.cloud.gateway: DEBUG
+        org.springframework.cloud.netflix.eureka: DEBUG
+
+    discovery:
+      client:
+        enabled: true  # Ensures service discovery is enabled
+        retry:
+          enabled: true  # Enables retries
+          maxAttempts: 5  # Max retry attempts
+          initialInterval: 1000  # Initial retry interval in milliseconds
+
+server:
+  port: 7777

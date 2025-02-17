@@ -1,0 +1,25 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Employee
+    username: postgres
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG  
+  file:
+    name: logs/application.log 
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n" 
